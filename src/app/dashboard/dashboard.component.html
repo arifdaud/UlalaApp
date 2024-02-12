@@ -1,0 +1,62 @@
+
+<nav class="navbar navbar-dark bg-dark justify-content-between" >
+  <a class="navbar-brand" style="margin-left: 5%;color: grey;">Dashboard</a>
+  <form class="form-inline" style="margin-right:5% ;">
+    <button (click)="signOut()" class="btn fa fa-sign-out " type="submit" style="color: grey;"></button>
+    <button (click)="signOut()" class="btn navbar-brand" style="font-style: normal; font-size: 18px;color: grey;" >Sign Out</button>
+  </form>
+</nav>
+
+<div class="body" style="margin-left: 10%; margin-right: 10%;margin-top: 3%;">
+  
+  <h2>Overview Dashboard</h2>
+  <div class="row">
+    <div class="col-md-6 p-1">
+      <div class="card">
+        <div class="card-header text-center">
+          Donnut Bar
+        </div>
+               
+        <div class="col">
+          <div style="height:40vh;"id="chartDonut"></div>
+        </div>      
+      </div>
+    </div>
+    <div class="col-md-6 p-1">
+      <div class="card ">
+        <div class="card-header text-center">
+          Chart Bar
+        </div>
+        <div style="height:40vh;" id="chartbar"></div>
+      </div>
+    </div>
+    
+    <div class="col-md-12 p-1" style="margin-top: 30px;" id="tableUsers"> 
+      <h2 >User List</h2>
+        <div style="height:40vh;" id="">
+          <div class="container mt-4">            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr *ngFor="let user of tableUsersData ; let i = index">
+                  <td>{{ i + 1 }}</td> 
+                  <td>{{ user.firstName }}</td>
+                  <td>{{ user.lastName }}</td>
+                  <td>{{ user.username }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+    </div>    
+  </div>
+</div>

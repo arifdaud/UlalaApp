@@ -1,38 +1,18 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { RegistrationComponent } from './registration/registration.component';
-import { ModalComponent } from './modal/modal.component';
-import { PostingComponent } from './posting/posting.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
-import { TodoComponent } from './todo/todo.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { SigninComponent } from './signin/signin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegistrationComponent,
-    ModalComponent,
-    PostingComponent,
-    NotFoundComponent,
-    WelcomeComponent,
-    PostDetailComponent,
-    TodoComponent,
-    NavbarComponent,
-  ],
-
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, SigninComponent, DashboardComponent],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ReactiveFormsModule],
+  providers: [AuthService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
