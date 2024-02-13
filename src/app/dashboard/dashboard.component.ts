@@ -56,6 +56,8 @@ export class DashboardComponent implements OnInit {
     pieSeries.hiddenState.properties.opacity = 1;
     pieSeries.hiddenState.properties.endAngle = -90;
     pieSeries.hiddenState.properties.startAngle = -90;
+    // color tone=grey
+    pieSeries.slices.template.fill = am4core.color("#999");
   }
   //chartbar implementation
   createProgresBarChart(data: any[]) {
@@ -72,18 +74,9 @@ export class DashboardComponent implements OnInit {
     barSeries.dataFields.valueY = "value";
     barSeries.dataFields.categoryX = "name";
     barSeries.columns.template.stroke = am4core.color("#fff");
-    barSeries.columns.template.strokeWidth = 2;
-    barSeries.columns.template.strokeOpacity = 1;
+     // color tone=grey
+    barSeries.columns.template.fill = am4core.color("#999")
     // This creates initial animation
     barSeries.hiddenState.properties.opacity = 1;
-  
-    // As by default columns of the same series are of the same color,
-    // we add an adapter which takes colors from chart.colors color set
-    barSeries.columns.template.adapter.add("fill", function (fill, target) {
-      if (target.dataItem) {
-        return chart.colors.getIndex(target.dataItem.index);
-      }
-      return fill;
-    });
   }
 }
