@@ -21,9 +21,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/signin']);
   }
   ngOnInit() {
-    // Make API call to get dashboard data after authentication
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGFlbWVuZXJzb2wuY29tIiwianRpIjoiNWI5YTc4YWYtZDNlMC00NWI3LWJmZTYtMDY5OTlmYzc2MWJkIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIzMzE4ZTcxMC05MzAzLTQ4ZmQtODNjNS1mYmNhOTU0MTExZWYiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNzEwMTYwMjg1LCJpc3MiOiJodHRwOi8vdGVzdC1kZW1vLmFlbWVuZXJzb2wuY29tIiwiYXVkIjoiaHR0cDovL3Rlc3QtZGVtby5hZW1lbmVyc29sLmNvbSJ9.-wiDBabz8_gGmaJDQBJX3HNhns0Ph1-P_Kjh706bCc0'; 
-    //const token =  this.authService.getBearerToken();
+    if (this.authService.isAuthenticated()) {
+    const token = this.authService.getBearerToken();
     this.http.get('http://test-demo.aemenersol.com/api/dashboard', { headers: { Authorization: `Bearer ${token}` } }).subscribe(
       (response: any) => {
         const pieChartdata = response.chartDonut; 
@@ -36,6 +35,11 @@ export class DashboardComponent implements OnInit {
       (error) => {
         console.error('Dashboard Error:', error);
       });
+      
+  } else {
+    // Redirect to sign-in if not authenticated or token is not valid
+    this.router.navigate(['/signin']);
+  }
   }
   //piechart implementation
   createPieChart(data: any[]) {

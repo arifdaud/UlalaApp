@@ -33,11 +33,11 @@ export class SigninComponent {
       this.http.post('http://test-demo.aemenersol.com/api/account/login', credentials)
         .subscribe(
           (response: any) => {
-            const token = response.access_token;             
-            // Set token in AuthService
-            this.authService.setBearerToken(token);
-            this.authService.setAuthenticated(true);           
-            // once sucess, redirect terus ke dashbaord
+            const token = response; 
+            // Use AuthService to handle token
+            this.authService.handleAuthentication(token);
+            
+            // Once success, redirect directly to the dashboard
             this.router.navigate(['/dashboard']);
           },
           (error) => {
@@ -47,5 +47,6 @@ export class SigninComponent {
     } else {
       console.log('Form is invalid');
     }
-  } 
+  }
+  
 }

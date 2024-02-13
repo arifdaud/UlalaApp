@@ -43,4 +43,10 @@ export class AuthService {
   getBearerToken(): string {
     return this.bearerToken;
   }
+  handleAuthentication(token: string): void {
+    // Set token in AuthService
+    this.setBearerToken(token);
+    this.setAuthenticated(true);
+  }
+  
 }
