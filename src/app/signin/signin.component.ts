@@ -37,7 +37,7 @@ export class SigninComponent {
             // Set token in AuthService
             this.authService.setBearerToken(token);
             this.authService.setAuthenticated(true);           
-            // Redirect to dashboard upon successful authentication
+            // once sucess, redirect terus ke dashbaord
             this.router.navigate(['/dashboard']);
           },
           (error) => {

@@ -8,7 +8,7 @@ export class AuthService {
   private bearerToken: string = '';
 
   constructor() {
-    // Retrieve authentication state and token from localStorage on service initialization
+    // Retrieve authentication state and token from localStorage on service 
     this.isAuthenticatedValue = JSON.parse(localStorage.getItem('isAuthenticated') || 'false');
     this.bearerToken = localStorage.getItem('bearerToken') || '';
   }

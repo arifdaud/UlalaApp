@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient,private authService: AuthService,private router: Router) {}
   
   signOut(): void {
-    // Call your authentication service's signOut method
+    // once click button, redirect to sign in
     this.authService.signOut();
     this.router.navigate(['/signin']);
   }
@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
         console.error('Dashboard Error:', error);
       });
   }
+  //piechart implementation
   createPieChart(data: any[]) {
     // Create chart instance
     let chart = am4core.create("chartDonut", am4charts.PieChart);
@@ -56,7 +57,7 @@ export class DashboardComponent implements OnInit {
     pieSeries.hiddenState.properties.endAngle = -90;
     pieSeries.hiddenState.properties.startAngle = -90;
   }
-
+  //chartbar implementation
   createProgresBarChart(data: any[]) {
     let chart = am4core.create("chartbar", am4charts.XYChart);
     // Add data
